@@ -10,17 +10,18 @@ out vec2 vtexCoord;
 
 uniform mat4 modelViewProjectionMatrix;
 uniform mat3 normalMatrix;
-uniform float amplitude = 0.1;
-uniform float freq = 1; // expressada en Hz
+uniform float speed = 0.5;
 uniform float time;
 uniform float PI = 3.141592;
 
 void main()
 {
-    float dt = amplitude*(sin(2*PI*freq*time));
-    vec3 N = normalize(normalMatrix * normal);    //N esta es eye space 
-    frontColor = vec4(vec3(N.z),1.0);   //
+    float angulo = speed* time;
+    mat3 rotateY = mat3(vec3(cos(angulo), 0, -sin(angulo)),
+                     vec3(0, 1, 0),
+                    vec3(sin(angulo), 0, cos(angulo)));
+    vec3 N = normalize(normalMatrix * normal);
+    frontColor = vec4(color,1.0);
     vtexCoord = texCoord;
-    gl_Position = modelViewProjectionMatrix * vec4(vertex + normal*dt, 1.0);
-    
+    gl_Position = modelViewProjectionMatrix * vec4(rotateY*vertex, 1.0);
 }

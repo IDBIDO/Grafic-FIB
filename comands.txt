@@ -1,0 +1,6 @@
+cd Animate_vertex/
+~/Desktop/G/NewViewer_c2dcae3/GLarenaSL
+/opt/Qt/5.12.1/gcc_64/bin/qmake
+make -j
+qmake-qt5
+./GLarenaSL

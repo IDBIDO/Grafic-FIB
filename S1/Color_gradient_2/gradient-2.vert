@@ -36,16 +36,20 @@ void main()
 
 
     vec3 N = normalize(normalMatrix * normal);
+
+    //posicion en clip space
+    gl_Position = modelViewProjectionMatrix * vec4(vertex, 1.0);
+
+    vec3 vertexNDC = gl_Position.xyz/gl_Position.w;
+
     //calculmos la longitud de un intervalo
-    float intervalLong = (boundingBoxMax.y - boundingBoxMin.y)/4;
 
     //miramos en que intervalo se situa vertex.y
-    float intervalPos = (vertex.y - boundingBoxMin.y)/intervalLong;
+
+    //esto funciona pork las coordenadas x, y, z de NDC space tiene range [-1, 1]
+    float intervalPos = (vertexNDC.y + 1) / 0.5;
     int pos = int(intervalPos);
 
-    //mix(vec3(x, y, z), vec3(x, y, z), 0.5);
-
     frontColor = mix(colors[pos], colors[pos+1], fract(intervalPos));
-    //vtexCoord = texCoord;
-    gl_Position = modelViewProjectionMatrix * vec4(vertex, 1.0);
+
 }

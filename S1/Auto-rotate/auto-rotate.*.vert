@@ -20,6 +20,7 @@ void main()
     mat3 rotateY = mat3(vec3(cos(angulo), 0, -sin(angulo)),
                      vec3(0, 1, 0),
                     vec3(sin(angulo), 0, cos(angulo)));
+                    
     vec3 N = normalize(normalMatrix * normal);
     frontColor = vec4(color,1.0);
     vtexCoord = texCoord;

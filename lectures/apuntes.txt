@@ -36,6 +36,19 @@ mat3 rotateZ(float a) {
 }
 
 
+--------------------------------------------------
+model phone 
+Ke -> material que emet llum
+
+si angle(N, L) > 90 graus -> cos (fi) donda negatiu, No calculare difusa, perque m'afectare el calcul 
+QUALSEVOL COSA QUE DONI COS(A) < 0, NO CAL CALUCULAR-HO.
+
+NORMALITZACIO:
+la intepolacio de vectors no preserva la normalitzacio. 
+(N, L, R, V) -> han de ser normalitzats
+  L  N  R 
+  V -> punt a observador
+
 
 
 

@@ -26,10 +26,11 @@ void main()
                         vec3(0, -sin(angulo), cos(angulo))
     );
 
-    float vectorTranslacio = vec3(0, 1, 0);
+    vec3 vectorTranslacio = vec3(0, 1, 0);
 
     //A * sin(2π * f * t + Θ)
     vec3 N = normalize(normalMatrix * normal);
+    
     frontColor = vec4(color,1.0)* N.z;
     vtexCoord = texCoord;
     gl_Position = modelViewProjectionMatrix * vec4(vectorTranslacio*(vertex) + rotateX*vertex, 1.0 - (vectorTranslacio)*(vertex));

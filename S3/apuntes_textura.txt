@@ -1,0 +1,3 @@
+uniform sampler2D colorMap      //no digit -> unit 0
+uniform sampler2D normMap1      //ends with '1' -> unit 1 
+uniforma sampler2D normMap3     //ends with '3' -> unit 3
